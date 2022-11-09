@@ -29,13 +29,18 @@ db.pets.find({ type: "dog" }).limit(20)
 db.pets.find({ type: "dog" }).limit(2)
 db.pets.find({ type: "dog" }).limit(40).toArray()
 
+// query operators
 db.pets.count({ type: "dog", age: { $gt:12 }})
 db.pets.count({ type: "dog", age: { $gte:12 }})
 db.pets.count({ type: "cat", age: { $eq: 12 }})
 db.pets.count({ type: "cat", age: { $ne: 12 }})
 db.pets.count({ name: "Fido", type: { $ne: "dog" }})
 
+// logical operators
+db.pets.count({ type: "bird", $and:[{age: { $gte: 4 }}, {age: { $lte: 8 }}] })
 
+// sort
+db.pets.find({ type: "dog" }).sort({ age: -1, breed: 1 }).limit(5)
 
 
 
