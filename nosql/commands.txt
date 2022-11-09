@@ -1,0 +1,43 @@
+show dbs
+
+use adoption
+
+Date.now()
+Math.max(1,5)
+
+db.pets.insertOne({ name: "Luna", type: "dog", breed: "havanese", age: 6})
+db.pets.countDocuments()
+show dbs
+
+db.pets.help()
+db.stats()
+
+db.pets.findOne()
+db.pets.findOne({ type: "dog" })
+db.pets.findOne({ type: "cat" })
+
+db.pets.find()
+
+run pets.js
+
+db.pets.find({ type: "dog" })
+db.pets.find({ type: "dog", age: 9 })
+
+db.pets.count({ type: "dog", age: 9 })
+
+db.pets.find({ type: "dog" }).limit(20)
+db.pets.find({ type: "dog" }).limit(2)
+db.pets.find({ type: "dog" }).limit(40).toArray()
+
+db.pets.count({ type: "dog", age: { $gt:12 }})
+db.pets.count({ type: "dog", age: { $gte:12 }})
+db.pets.count({ type: "cat", age: { $eq: 12 }})
+db.pets.count({ type: "cat", age: { $ne: 12 }})
+db.pets.count({ name: "Fido", type: { $ne: "dog" }})
+
+
+
+
+
+
+

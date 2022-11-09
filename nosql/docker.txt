@@ -1,2 +1,3 @@
 docker run --name mongo -dit -p 27017:27017 --rm mongo
 docker exec -it mongo mongosh
+docker ps
