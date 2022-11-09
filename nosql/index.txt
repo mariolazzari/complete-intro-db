@@ -1,0 +1,18 @@
+db.pets.find({name: "Fido"}).explain("executionStats")
+
+db.pets.createIndex({ name: 1 })
+
+// compound
+db.pets.createIndex({ type: 1, name: 1 })
+
+// unique
+db.pets.createIndex({ index: 1 }, { unique: true })
+
+// full text index
+db.pets.createIndex({ type: "text", breed: "text", name: "text" })
+db.pets.find({ $text: { $search: "dog havanese luna" }})
+db.pets.find({ $text: { $search: "dog havanese luna" }}).sort({ $score: { $meta: "textScore" }})
+db.pets.find({ $text: { $search: "dog havanese luna" }, { $score: { $meta: "textScore" }}).sort({ $score: { $meta: "textScore" }})
+
+
+db.pets.getIndexes()

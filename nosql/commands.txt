@@ -42,7 +42,25 @@ db.pets.count({ type: "bird", $and:[{age: { $gte: 4 }}, {age: { $lte: 8 }}] })
 // sort
 db.pets.find({ type: "dog" }).sort({ age: -1, breed: 1 }).limit(5)
 
+// projections
+db.pets.find({ type: "dog" }, { name: 1, _id: 0 }).limit(5)
+db.pets.find({ type: "dog" }, { name: true, breed: true,  _id: false }).limit(5)
+db.pets.find({ type: "dog" }, { _id: false }).limit(5)
 
+// updating
+db.pets.updateOne({ type: "dog", name: "Luna", breed: "Havanese"}, { $set: { owner: "me"}} )
+db.pets.find({ owner: "me" })
 
+db.pets.updateMany({ type: "dog" }, { $inc: { age: 1 }})
 
+// upsert
+db.pets.updateOne(
+ { type: "dog", name: "Sudo", breed: "Wheaten" },
+ { $set: {type: "dog", name "Sudo", breed: "Wheaten", age: 5, owner: "you", index: 666666 } },
+ { upsert: true })
+
+// delete
+db.pets.deleteOne({type: "reptile", breed: "Havanese"})
+db.pets.deleteMany({type: "reptile", breed: "Havanese"})
+db.pets.findOneAndDelete({ name: "Fido", type: "reptile" })
 
