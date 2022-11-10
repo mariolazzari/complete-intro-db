@@ -63,4 +63,3 @@ db.pets.updateOne(
 db.pets.deleteOne({type: "reptile", breed: "Havanese"})
 db.pets.deleteMany({type: "reptile", breed: "Havanese"})
 db.pets.findOneAndDelete({ name: "Fido", type: "reptile" })
-
