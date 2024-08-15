@@ -1,0 +1,5 @@
+create database message_board
+\c message_board
+
+\?
+-- comment
