@@ -40,7 +40,7 @@ docker exec -it -u postgres postgres psql
 
 ### Redis with Docker
 
-´´´sh
+```sh
 docker run -dit --rm --name=redis -p 6379:6379 redis
 docker exec -it redis redis-cli
 ```
