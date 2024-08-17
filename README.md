@@ -2,6 +2,28 @@
 
 ## Terminology
 
+- *Database*: repository of data of different types:
+  - NoSQL
+  - SQL
+  - Grapg
+  - Key/Value
+- *Query*: request sent to Database
+  - Create
+  - Read
+  - Update
+  - Delete
+- *Schema*: shape of data
+  - SQL: strict 
+  - NoSQL: schema-less
+  *Transaction*: collection of operations treated as a single logical operation.
+- *ACID*:
+  - Atomicity: transactions cannot be divided (one atomic transaction)
+  - Consistency: data must garantee consistency between them via referential integrity
+  - Isoltation: cuncurrent transactions should not interfere with each others
+  - Durability: changes made by a committed transaction must not be lost
+- **:
+   
+
 ## NoSQL
 
 ### MongoDB with Docker
