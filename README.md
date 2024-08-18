@@ -104,7 +104,53 @@ db.stats();
 }
 ```
 
+#### Find one document
 
+```js
+db.pets.findOne();
+
+// result
+{
+  _id: ObjectId('66c09a8f126d4237b491b588'),
+  name: 'Luna',
+  type: 'dog',
+  breed: 'Havanese',
+  age: 8
+}
+
+// filtering by type dog
+db.pets.find({type: "dog"})
+[
+  {
+    _id: ObjectId('66c09a8f126d4237b491b588'),
+    name: 'Luna',
+    type: 'dog',
+    breed: 'Havanese',
+    age: 8
+  }
+]
+
+// filtering by tyoe cat
+db.pets.find({type: "dog"});
+// empty
+
+```
+
+#### Find all documents: return a collection
+
+```js
+// find all dogs 
+db.pets.find({type: "dog"});
+[
+  {
+    _id: ObjectId('66c09a8f126d4237b491b588'),
+    name: 'Luna',
+    type: 'dog',
+    breed: 'Havanese',
+    age: 8
+  }
+]
+```
 
 
 ```js
@@ -121,6 +167,42 @@ db.pets.aggregate([
     }
   }
 ])
+```
+
+#### InsertMany
+
+```js
+
+// add 10.000 pets to collection
+db.pets.insertMany(
+  Array.from({ length: 10000 }).map((_, index) => ({
+    name: [
+      "Luna",
+      "Fido",
+      "Fluffy",
+      "Carina",
+      "Spot",
+      "Beethoven",
+      "Baxter",
+      "Dug",
+      "Zero",
+      "Santa's Little Helper",
+      "Snoopy",
+    ][index % 9],
+    type: ["dog", "cat", "bird", "reptile"][index % 4],
+    age: (index % 18) + 1,
+    breed: [
+      "Havanese",
+      "Bichon Frise",
+      "Beagle",
+      "Cockatoo",
+      "African Gray",
+      "Tabby",
+      "Iguana",
+    ][index % 7],
+    index: index,
+  }))
+);
 ```
 
 ## SQL
